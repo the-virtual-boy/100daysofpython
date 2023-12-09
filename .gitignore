@@ -1,4 +1,4 @@
-*/.env
-*/.cache
-/.idea/workspace.xml
-/.venv
+.env
+.cache
+.idea/workspace.xml
+.venv
