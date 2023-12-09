@@ -2,10 +2,15 @@ import requests
 from bs4 import BeautifulSoup
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
+from dotenv import dotenv_values
 
-CLIENT_ID = "691b937ef95c483aaf53bd6caf45f0c2"
-CLIENT_SECRET = "cd7143999e5742aa8cd1a4df63de2cfe"
-USER = "1295783034"
+config = dotenv_values("../.env")
+
+CLIENT_ID = config["SPOTIFY_CLIENT_ID"]
+CLIENT_SECRET = config["SPOTIFY_CLIENT_KEY"]
+USER = config["SPOTIFY_USERNAME"]
+
+
 time = input("What date would you like to travel back to? (YYYY-MM-DD): ")
 # time = "2000-08-12"
 response = requests.get("https://www.billboard.com/charts/hot-100/" + time)
