@@ -29,8 +29,7 @@ def shopTimerTrigger(turn, to_buy=''):
     to_buy, efficiency = calculate_efficiency(items[::-1], cookies)
 
     set_grandma_upgrade(to_buy)
-    # print(to_buy, efficiency, .025 * 1 / ((turn // 20) + .9) )
-    print(.025 - .005* (turn // 25))
+    print(to_buy, efficiency, .025 * 1 / ((turn // 20) + .9) )
     if is_efficient(efficiency, turn):
         print('buy')
         buy += 1
@@ -57,7 +56,7 @@ def calculate_efficiency(items, cookies, efficiency=-1, index=0, to_buy = 'Time 
         print(index, items[index])
         i = items[index]
         print('-', i)
-        if int(i['cost']) * 1/2 < int(cookies) and OUTPUT[i['name']] / i['cost'] > efficiency:
+        if int(i['cost']) * 3/4 < int(cookies) and OUTPUT[i['name']] / i['cost'] > efficiency:
             efficiency = OUTPUT[i['name']] / i['cost']
             to_buy = i['name']
             print('----', to_buy, efficiency)
@@ -66,8 +65,7 @@ def calculate_efficiency(items, cookies, efficiency=-1, index=0, to_buy = 'Time 
     return to_buy, efficiency
 
 def is_efficient(efficiency, turn):
-    # return efficiency > .025 * 1 / ((turn // 15) + .7)
-    return efficiency > .02 - .005* (turn // 25)
+    return efficiency > .025 * 1 / ((turn // 15) + .7)
 
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_experimental_option("detach", True)
