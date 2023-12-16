@@ -23,7 +23,7 @@ soup = BeautifulSoup(page, "lxml")
 search = soup.find_all("li", class_='ListItem-c11n-8-84-3-StyledListCardWrapper')
 
 
-homes = [{'link': item.find("a").get("href"), 'address': ','.join(item.find("address").get_text().split(',')[-3:]).split('|')[-1].strip(), 'price': item.find("span", class_="PropertyCardWrapper__StyledPriceLine").get_text()[0:6]} for item in search ]
+homes = [{'link': item.find("a").get("href"), 'address': ','.join(item.find("address").get_text().split(',')[-3:]).split('|')[-1].strip(), 'price': item.find("span", class_="PropertyCardWrapper__StyledPriceLine").get_text()[0:6].split('+')[0]} for item in search ]
 
 driver.get(FORMS_LINK)
 
