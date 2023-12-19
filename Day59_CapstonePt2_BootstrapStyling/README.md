@@ -1,0 +1,5 @@
+# Capstone Project Part 2: Blog Website with Bootstrap Styling
+
+Day 59 returned right back to where we were at day 57, but now utilizes the styling benefits from Bootstrap. Along with modifying the looks, the project introduces concepts like jinja's `include` function to be able to add the header with added bootstrap and css links to multiple html files with ease, as well as the javascript script in the footer. Basically the project followed Part 1, but involved downloading a tempalte from bootstrap, linking to bootstraps CDN link, and modifying the previous project to look better in this pre-created template.
+
+The Bootstrap portion doesn't feel too necessary to python development, but it's good to know going ahead. I think the real win was learning about `includes` and other Jinja methods to make developing multiple pages of html incredibly quick.

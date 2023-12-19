@@ -1,0 +1,5 @@
+# Bootstrap Introduction
+
+Day 58 veered off course for a moment, and brought in a lesson from the instructors other Web Development course for a quick introduction to Bootstrap. The goal of the day was more template copying and pasting, but now to modify the bootstrap classes to make the visual changes that we needed. The final project consisted of making the front page for a fictitious "Tindog" app, which is tinder for dogs.
+
+This project was at least a little more interesting than the previous templating lesson, as templates were downloaded but completely modified in some cases to fit this fictitious app. I have to say that changing values in tiny increments to try and get an alignment perfect is one of the less enjoyable parts of web development, and it took a lot of effort to inspect the elements on her completed example to just copy and paste elements to my project.
