@@ -1,0 +1,5 @@
+# Working Contact Page
+
+Day 60 could be seen as capstone part 3, as the goal was to get the "Contact" page working in the blog. To do that, an introduction to HTML forms, and handling of POST requests was given, and then used to modify the current Contact page.
+
+The 100 days of code python course is casually broken down into skill levels: Beginner, Intermediate, Intermediate+ and Advanced. Day 60 begins the Advanced level of the course, and one immediate change seems to be the lack of video tutorials at this level. In fact, day 60 had no videos at all, choosing to give instructions and project requirements all through text. It is a change of pace, but interestingly enough, a welcome change. It seems while I enjoy videos when getting introduced to something, text is so much easier to skim, pick out the part you need, and get to work. It almost feels more realistic to a work environment as well, as if I'm reading the notes/requirements off a Jira ticket, or an email from a manager instead of following a course.

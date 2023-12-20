@@ -1,0 +1,5 @@
+# Login with WTForms
+
+Day 61 involved an introduction to the framework WTForms, and using its simple forms to create a login page that would either give you a success or failure page depending on information entered, as well as being capable of input validation.
+
+The difficulty is definitely ramping up in these lessons. The frustration of hard-to-read documentation is balanced only by the satisfaction of getting a piece of code to finally work. I'm not entirely sure if it's an issue with the format of the code in the lessons, the way windows copies text, or VScode, but I ran into an issue where the template code for WTforms wasn't being processed correctly when copied from the lesson and instead was being processed as CSS code, but did work if I deleted it and manually typed it. Specifically this issue occured with the `{{ super() }}` line within the `<style` element.
