@@ -1,0 +1,5 @@
+# Movie Ranking List
+
+Day 64 dove more into SQL Alchemy, while bringing back in bootstrap, API interactions and WTForms to tie everything together nicely. The objective was to create a web page that lists my favorite movies within stylistic bootstra "cards" that showed the title and poster on the front, and then showed my personal ranking and review, along with the year of release and movie overview on the back when hovered over with a mouse. The use of SQL Alchemy allows the the user to add, edit, and remove items from the list. The API is used in the add function, where it takes a title to search and presents a list of results from The Movie Database that the user can click on to actually add into the DB.
+
+Another SQL Alchemy project meant another row of headaches to muscle through. This project still had its share of pains as the previous one, but I do like the end result and enjoyed making this project all the same. I really like the idea of not making the user fill out a new movie themselves and using the The Movie Database to only require a name and fill out the rest of the info programmatically.
