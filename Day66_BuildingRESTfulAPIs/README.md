@@ -1,0 +1,5 @@
+# Cafe API
+
+Day 66 was about learning to build APIs instead of just utilizing other site's APIs. The goal was to use the instructors starting files for site tracking Cafes and their attributes that make working in them favorable or not. The list of cafes and their attributes were kept in an sqlite database already prepopulated with data. The project required making additional routes but instead of creating html files and rendering them in the routes, they were solely used as API endpoints to access, modify or delete the data in the database.
+
+This project was not as difficult as I originally expected, the difference from a website that just reacts to use input is already 90% what is required, and most of the new code was using what the lessons taught about jsonify and sending http codes to request. The day's lesson also went over REST architecture in general, postman for testing the API quickly and efficiently, and API documentation which we used psotman to quickly create. In the end, the project had me publish the docs for my API which can be found here. [API Docs](https://documenter.getpostman.com/view/32064619/2s9YsDkEyw)
