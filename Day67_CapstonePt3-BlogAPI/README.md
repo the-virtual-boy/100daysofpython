@@ -1,0 +1,5 @@
+# Blog Website Capstone Part 3
+
+Day 67 returned to the blog capstone project previously worked on for a part 3 to add DB functionality to it. The project consisted of switching from using the free online npoint API to pulling the articles from a prepopulated Database, as well as including functions to add new articles, and edit or delete existing ones.
+
+This project was actually a lot smoother as far as capstone projects go, it really didn't push anything extra, and just had the same CRUD concepts that were covered in previous days. Basically another site with routes that ran function to add to the DB, edit items in the DB, and delete items in the DB. Was a bit underwhelming, but I still do enjoy seeing a project get worked on and expanded with more and more concepts as I go. One possible idea to work on is use the web design concepts on day 65 and the functionality that I'm slowly building in the capstone projects to bring a fully functional and designed blog to life.
