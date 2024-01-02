@@ -13,7 +13,7 @@ from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
 import smtplib
 from dotenv import dotenv_values
 
-config = dotenv_values(".env")
+config = dotenv_values("../.env")
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = config['SECRET_KEY']
