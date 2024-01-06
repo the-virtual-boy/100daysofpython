@@ -1,0 +1,5 @@
+# Linear Regression and Data Visualization with Seaborn
+
+Day 78 mixes both the previous data visualization concepts with Numpy and general computations. In this case the project requires using Seabon, a module expenting MatPlotLib to create plots that also show the linear regression line within the data.
+
+While the past few days have been conducted the exact same, linear steps performed on a python notebook. It is getting more interesting to see everything come together, and see the kind of "stories" you can tell with data that actually feel meaningful. I can see a lot of what is learned here to not only graph, but to analize and make predictions about information, such as metrics gathered on a system that could influence decisions such as where to focus on security, what systems need updates due to tech debt the most, etc.
