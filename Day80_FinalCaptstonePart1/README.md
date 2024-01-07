@@ -1,0 +1,5 @@
+# Analyzing Dr. Semmelweis's Childbirth Death Data
+
+Day 80 is part 1 of the final capstone project for the course before the professional portfolio projects begin. It involved analyzing Dr. Semmelweis's recorded data of monthly and yearly total births vs birthing deaths over 2 clinics.
+
+More of the same with this capstone project really. I made some basic attempts at the graphs, and got the first few, but then fell back to my compromise again: doing the data computation and dataform manipulations, and just copying the code for the charts themselves. In the end, I understand the point to the chart, it's meant to make someone who has a lot less time to see the connections I made more easily, but as far as making the connections myself, just printing out the dataforms after getting them in the table that I need is more than enough to understand the data and make the connections that I need.
