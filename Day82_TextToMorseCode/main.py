@@ -20,7 +20,7 @@ MORSE_CODE_DICT = { 'A':'.-', 'B':'-...',
                     '7':'--...', '8':'---..', '9':'----.',
                     '0':'-----', ',':'--..--', '.':'.-.-.-',
                     '?':'..--..', '/':'-..-.', '-':'-....-',
-                    '(':'-.--.', ')':'-.--.-', ' ':'    '}
+                    '(':'-.--.', ')':'-.--.-', ' ':'/'}
 
 
 #functions
@@ -31,7 +31,7 @@ def convert(code):
     if len(code) == 1:
         return f"{MORSE_CODE_DICT[code[0].upper()]}"
     else:
-        return f"{MORSE_CODE_DICT[code[0].upper()]}   {convert(code[1:])}"
+        return f"{MORSE_CODE_DICT[code[0].upper()]} {convert(code[1:])}"
 
             
 ## take input as text
