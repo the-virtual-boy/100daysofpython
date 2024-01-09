@@ -83,7 +83,7 @@ else:
     text_to_convert = input("Text to Convert: ")
 
     ## convert it
-    encoded_message = [convert(text_to_convert, set_mode)]
+    encoded_message = convert(text_to_convert, set_mode)
 
     ## output morse code
-    print("Your message in Morse code is: ", encoded_message[0])
+    print(f"Your {'decoded' if set_mode == 'D' else 'encoded'} message: \n{encoded_message}")
