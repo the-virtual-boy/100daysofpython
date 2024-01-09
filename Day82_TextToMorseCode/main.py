@@ -3,7 +3,7 @@
 # Author: me ;)
 
 #imports
-
+import argparse
 
 #globals
 MORSE_CODE_DICT = { 'A':'.-', 'B':'-...',
@@ -20,7 +20,8 @@ MORSE_CODE_DICT = { 'A':'.-', 'B':'-...',
                     '7':'--...', '8':'---..', '9':'----.',
                     '0':'-----', ',':'--..--', '.':'.-.-.-',
                     '?':'..--..', '/':'-..-.', '-':'-....-',
-                    '(':'-.--.', ')':'-.--.-', '\'':'.----.', ' ':'/'}
+                    '(':'-.--.', ')':'-.--.-', '\'':'.----.',
+                      ' ':'/'}
 
 PLAIN_TEXT_DICT = {'.-': 'A', '-...': 'B', '-.-.': 'C',
                     '-..': 'D', '.': 'E', '..-.': 'F',
@@ -37,6 +38,17 @@ PLAIN_TEXT_DICT = {'.-': 'A', '-...': 'B', '-.-.': 'C',
                     '--..--': ', ', '.-.-.-': '.', '..--..': '?',
                     '-..-.': '/', '-....-': '-', '-.--.': '(',
                     '-.--.-': ')', '.----.':'\'', '/': ' '}
+
+msg="Encodes plain text to morse code or decodes morse code to plain text.\n" \
+    "Runs in silent mode if given -de and messag (in quotes if there are spaces)"
+
+# param arguments
+parser = argparse.ArgumentParser(usage='Usage: main.py [MODE]... [TEXT]... ')
+
+parser.add_argument("-d", "--decode", help = "Sets decode mode", metavar='CODE')
+parser.add_argument("-e", "--encode", help = "Sets encode mode", metavar='TEXT')
+
+args = parser.parse_args()
 
 #functions
 
@@ -59,16 +71,19 @@ def convert(code, mode):
             return f"{PLAIN_TEXT_DICT[code[0]]}{convert(code[1:], mode)}"
     else:
         return f"Error: incorrect value for mode. Use either E for encode or D for decode."
-
             
-## take input as text
-set_mode = input("Do you want to (E)ncode or (D)ecode a message?: ")[0].upper()
-text_to_convert = input("Text to Convert: ")
 
+if args.decode:
+    print(convert(args.decode, 'D'))
+elif args.encode:
+    print(convert(args.encode, 'E'))
+else:
+    ## get mode and message from user
+    set_mode = input("Do you want to (E)ncode or (D)ecode a message?: ")[0].upper()
+    text_to_convert = input("Text to Convert: ")
 
-## convert it
-encoded_message = [convert(text_to_convert, set_mode)]
+    ## convert it
+    encoded_message = [convert(text_to_convert, set_mode)]
 
-
-## output morse code
-print(f"Your message in Morse code is: {encoded_message}")
+    ## output morse code
+    print("Your message in Morse code is: ", encoded_message[0])
