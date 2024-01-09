@@ -39,11 +39,14 @@ PLAIN_TEXT_DICT = {'.-': 'A', '-...': 'B', '-.-.': 'C',
                     '-..-.': '/', '-....-': '-', '-.--.': '(',
                     '-.--.-': ')', '.----.':'\'', '/': ' '}
 
-# param arguments
-parser = argparse.ArgumentParser()
+msg="Encodes plain text to morse code or decodes morse code to plain text.\n" \
+    "Runs in silent mode if given -de and messag (in quotes if there are spaces)"
 
-parser.add_argument("-d", "--decode", help = "Sets decode mode")
-parser.add_argument("-e", "--encode", help = "Sets encode mode")
+# param arguments
+parser = argparse.ArgumentParser(usage='Usage: main.py [MODE]... [TEXT]... ')
+
+parser.add_argument("-d", "--decode", help = "Sets decode mode", metavar='CODE')
+parser.add_argument("-e", "--encode", help = "Sets encode mode", metavar='TEXT')
 
 args = parser.parse_args()
 
