@@ -12,6 +12,8 @@ The application has the ability to run in interactive mode that prompts the user
 
 3. Enter plain-text if encoding, or morse code if decoding.
 
+4. If you chose to encode, then you will be prompted whether you want to hear the morse code be played for you.
+
 4. Enjoy your encoded/decoded message!
 
 
@@ -20,6 +22,8 @@ The application can also run silently, taking in options and the message as comm
 
 1. Move to the project root directory in the Terminal
 
-2. Run the main application file with python, and provide nececssary argument: -d for decode, and -e for encode, followed by the message surrounded in quotes if there are spaces. Use -h or --help to display the available options on the command line. ex: `python main.py -e "Hello World"` or `python main.py -h`
+2. Run the main application file with python, and provide nececssary argument: `-d` for decode, and `-e` for encode, followed by the message surrounded in quotes if there are spaces. Use `-h` or `--help` to display the available options on the command line. ex: `python main.py -e "Hello World"` or `python main.py -h`
 
-3. Enjoy your encoded/decoded message printed to the Terminal!
+3. Optionaly you can use the '-b' option with encode mode to have the app play the morse code after encoding.
+
+4. Enjoy your encoded/decoded message printed to the Terminal!

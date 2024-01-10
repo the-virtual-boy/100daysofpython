@@ -53,10 +53,11 @@ letter_rest = .2
 word_rest = .5
 
 # param arguments
-parser = argparse.ArgumentParser(usage='Usage: main.py [MODE]... [TEXT]... ')
+parser = argparse.ArgumentParser(usage='Usage: main.py [-b] [-MODE TEXT]')
 
 parser.add_argument("-d", "--decode", help = "Sets decode mode", metavar='CODE')
 parser.add_argument("-e", "--encode", help = "Sets encode mode", metavar='TEXT')
+parser.add_argument("-b", "--beep", help = "Plays morse code beeps. Only usable with encode", action='store_true')
 
 args = parser.parse_args()
 
@@ -94,9 +95,13 @@ def code_beep(code):
         sleep(letter_rest)
 
 if args.decode:
-    print(convert(args.decode, 'D'))
+    encoded_message = convert(args.decode, 'D')
+    print(encoded_message)
 elif args.encode:
-    print(convert(args.encode, 'E'))
+    encoded_message = convert(args.encode, 'E')
+    print(encoded_message)
+    if args.beep:
+        code_beep(encoded_message)
 else:
     ## get mode and message from user
     set_mode = input("Do you want to (E)ncode or (D)ecode a message?: ")[0].upper()
