@@ -69,7 +69,7 @@ def convert(code, mode):
     ## decides whether to encode or decode
     if mode == 'E':
         if code[0].upper() not in MORSE_CODE_DICT:
-            raise Exception("Untranslatable character. Available characters: ", MORSE_CODE_DICT.keys())
+            raise Exception(f"Untranslatable character. Available characters: {MORSE_CODE_DICT.keys()}")
         elif len(code) == 1:
             return f"{MORSE_CODE_DICT[code[0].upper()]}"
         else:
@@ -79,7 +79,7 @@ def convert(code, mode):
             code = code.split(' ')
 
         if code[0].upper() not in PLAIN_TEXT_DICT:
-            raise Exception("Untranslatable character. Available characters: ", PLAIN_TEXT_DICT.keys())
+            raise Exception(f"Untranslatable character. Available characters: {PLAIN_TEXT_DICT.keys()}")
         elif len(code) == 1:
             return f"{PLAIN_TEXT_DICT[code[0].upper()]}"
         else:
