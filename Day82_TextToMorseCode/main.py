@@ -49,8 +49,8 @@ frequency = 825
 dit = 200
 dah = 500
 space_rest = .1
-letter_rest = .2
-word_rest = .5
+letter_rest = .3
+word_rest = .6
 
 # param arguments
 parser = argparse.ArgumentParser(usage='Usage: main.py [-b] [-MODE TEXT]')
@@ -68,14 +68,19 @@ def convert(code, mode):
     
     ## decides whether to encode or decode
     if mode == 'E':
-        if len(code) == 1:
+        if code[0].upper() not in MORSE_CODE_DICT:
+            raise Exception("Untranslatable character. Available characters: ", MORSE_CODE_DICT.keys())
+        elif len(code) == 1:
             return f"{MORSE_CODE_DICT[code[0].upper()]}"
         else:
             return f"{MORSE_CODE_DICT[code[0].upper()]} {convert(code[1:], mode)}"
     elif mode == 'D':
         if type(code) == str:
             code = code.split(' ')
-        if len(code) == 1:
+
+        if code[0].upper() not in PLAIN_TEXT_DICT:
+            raise Exception("Untranslatable character. Available characters: ", PLAIN_TEXT_DICT.keys())
+        elif len(code) == 1:
             return f"{PLAIN_TEXT_DICT[code[0].upper()]}"
         else:
             return f"{PLAIN_TEXT_DICT[code[0]]}{convert(code[1:], mode)}"
@@ -94,6 +99,14 @@ def code_beep(code):
             sleep(space_rest)
         sleep(letter_rest)
 
+def secure_choice(msg, opt):
+    inp = input(msg)[0].upper()
+    if inp not in opt:
+        return secure_choice(f"That is not a valid option, please select from: {opt}: ", opt)
+    else:
+        return inp
+
+
 if args.decode:
     encoded_message = convert(args.decode, 'D')
     print(encoded_message)
@@ -104,7 +117,8 @@ elif args.encode:
         code_beep(encoded_message)
 else:
     ## get mode and message from user
-    set_mode = input("Do you want to (E)ncode or (D)ecode a message?: ")[0].upper()
+    set_mode = secure_choice("Do you want to (E)ncode or (D)ecode a message?: ", ('E', 'D'))
+    
     text_to_convert = input("Text to Convert: ")
 
     ## convert it
@@ -115,7 +129,7 @@ else:
 
     ## request beeps
     if set_mode == 'E':
-        beep = input("Would you like to hear your message? (Y or N): ").upper()
+        beep = secure_choice("Would you like to hear your message? (Y or N): ", ('Y', 'N'))
 
         if beep == 'Y':
             code_beep(encoded_message)
