@@ -4,6 +4,9 @@
 
 #imports
 import argparse
+import winsound
+from time import sleep
+
 
 #globals
 MORSE_CODE_DICT = { 'A':'.-', 'B':'-...',
@@ -42,11 +45,19 @@ PLAIN_TEXT_DICT = {'.-': 'A', '-...': 'B', '-.-.': 'C',
 msg="Encodes plain text to morse code or decodes morse code to plain text.\n" \
     "Runs in silent mode if given -de and messag (in quotes if there are spaces)"
 
+frequency = 825
+dit = 200
+dah = 500
+space_rest = .1
+letter_rest = .2
+word_rest = .5
+
 # param arguments
-parser = argparse.ArgumentParser(usage='Usage: main.py [MODE]... [TEXT]... ')
+parser = argparse.ArgumentParser(usage='Usage: main.py [-b] [-MODE TEXT]')
 
 parser.add_argument("-d", "--decode", help = "Sets decode mode", metavar='CODE')
 parser.add_argument("-e", "--encode", help = "Sets encode mode", metavar='TEXT')
+parser.add_argument("-b", "--beep", help = "Plays morse code beeps. Only usable with encode", action='store_true')
 
 args = parser.parse_args()
 
@@ -54,8 +65,7 @@ args = parser.parse_args()
 
 ## function in charge decoding or encoding input message
 def convert(code, mode):
-    global MORSE_CODE_DICT
-
+    
     ## decides whether to encode or decode
     if mode == 'E':
         if len(code) == 1:
@@ -71,12 +81,27 @@ def convert(code, mode):
             return f"{PLAIN_TEXT_DICT[code[0]]}{convert(code[1:], mode)}"
     else:
         return f"Error: incorrect value for mode. Use either E for encode or D for decode."
-            
+
+def code_beep(code):
+    for word in code.split(' '):
+        for symbol in word:
+            if symbol == '.':
+                winsound.Beep(frequency, dit)
+            elif symbol == '-':
+                winsound.Beep(frequency, dah)
+            elif symbol == '/':
+                sleep(word_rest)
+            sleep(space_rest)
+        sleep(letter_rest)
 
 if args.decode:
-    print(convert(args.decode, 'D'))
+    encoded_message = convert(args.decode, 'D')
+    print(encoded_message)
 elif args.encode:
-    print(convert(args.encode, 'E'))
+    encoded_message = convert(args.encode, 'E')
+    print(encoded_message)
+    if args.beep:
+        code_beep(encoded_message)
 else:
     ## get mode and message from user
     set_mode = input("Do you want to (E)ncode or (D)ecode a message?: ")[0].upper()
@@ -87,3 +112,10 @@ else:
 
     ## output morse code
     print(f"Your {'decoded' if set_mode == 'D' else 'encoded'} message: \n{encoded_message}")
+
+    ## request beeps
+    if set_mode == 'E':
+        beep = input("Would you like to hear your message? (Y or N): ").upper()
+
+        if beep == 'Y':
+            code_beep(encoded_message)
