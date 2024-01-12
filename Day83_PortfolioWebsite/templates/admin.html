@@ -1,0 +1,60 @@
+{% include "header.html" %}
+
+<!-- Page Header-->
+<header
+  class="masthead"
+  style="background-image: url('../static/assets/img/home-bg.jpg')"
+>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="site-heading">
+          <h1>Admin's Messages</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Main Content-->
+<div class="container px-4 px-lg-5">
+  <div class="row gx-4 gx-lg-5 justify-content-center">
+    <div class="col-md-10 col-lg-8 col-xl-7">
+      <!-- Post preview-->
+      <div class="container px-4 px-lg-5">
+  <div class="row gx-4 gx-lg-5 justify-content-center">
+    <div class="col-md-10 col-lg-8 col-xl-7">
+      <!-- Post preview-->
+      {% for message in messages %}
+      <div class="post-preview">
+          <h2 class="post-title">Subject: {{ message.subject }}</h2>
+          <h3 class="post-subtitle">Name: {{ message.name }}</h3>
+          <h3 class="post-subtitle">Email: {{ message.email }}</h3>
+        </a>
+        <p class="post-meta">
+          Message:
+          {{ message.message }}</br>
+          {{message.date}}
+          <a href="{{url_for('delete_message', message_id=message.id) }}">✘</a>
+          <!-- TODO: Only show delete button if user id is 1 (admin user) -->
+        </p>
+      </div>
+      
+      <!-- Divider-->
+      <hr class="my-4" />
+      {% endfor %}
+      <div class="d-flex justify-content-end mb-4">
+        <a class="btn btn-secondary text-uppercase" href="{{url_for('logout')}}">Logout</a>
+      </div>
+
+      <!-- New Post -->
+      <!-- TODO: Only show Create Post button if user id is 1 (admin user) -->
+      
+      </div>
+
+      <!-- Pager-->
+      
+    </div>
+  </div>
+</div>
+
+{% include "footer.html" %}
