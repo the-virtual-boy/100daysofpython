@@ -18,7 +18,7 @@ def admin_only(f):
         return f(*args, **kwargs)
     return decorated_function
 
-config = dotenv_values('../.env')
+config = dotenv_values('.env')
 KEY = config['SECRET_KEY']
 
 app = Flask(__name__)
