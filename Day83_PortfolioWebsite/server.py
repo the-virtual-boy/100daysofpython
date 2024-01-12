@@ -21,7 +21,7 @@ def admin_only(f):
     return decorated_function
 
 config = dotenv_values('../.env')
-KEY = config['FLASK_KEY']
+KEY = config['SECRET_KEY']
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = KEY
@@ -30,7 +30,7 @@ Bootstrap5(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = config['SQLALCHEMY_DATABASE_URI']
 
 db = SQLAlchemy()
 db.init_app(app)
