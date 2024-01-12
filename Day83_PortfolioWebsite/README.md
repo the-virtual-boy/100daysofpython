@@ -1,6 +1,6 @@
 # Porfolio Website
 
-This is the code that supports my portfolio website which is also being hosted on a free tier server on Render.com here: https://my-python-blog-y651.onrender.com/
+This is the code that supports my portfolio website which is also being hosted on a free tier server on Render.com here: https://my-python-portfolio.onrender.com
 
 The website is used to promote my skills, link to this very github account as well as my linked in, and give a way for inquiries to be sent right to the page. Aside from that, the page also serves as an example of some of the skills I have gained in Python, including building a full backend using flask, user authentication to keep others from reading the submitted messages, connection to postgres to store those messages as well as a list of registered users, and front end templating with Bootstrap and WTForms.
 
