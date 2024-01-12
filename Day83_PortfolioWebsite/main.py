@@ -12,13 +12,16 @@ from dotenv import dotenv_values
 def admin_only(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
-        if not current_user.is_authenticated and current_user.get_id() is not 1:
+        print(current_user.get_id())
+        print(type(current_user.get_id()))
+        if not current_user.is_authenticated or current_user.get_id() != "1":
+            print("not allowed!")
             return redirect(url_for('login'))
             # abort(403)
         return f(*args, **kwargs)
     return decorated_function
 
-config = dotenv_values('.env')
+config = dotenv_values('../.env')
 KEY = config['SECRET_KEY']
 
 app = Flask(__name__)
