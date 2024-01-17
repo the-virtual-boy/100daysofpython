@@ -14,13 +14,15 @@ class GameBoard:
     def __init__(self, window, comp: bool = False):
         self.win = window
         self.comp = comp
-        self.new_game()        
+        if self.comp:
+            self.comp_sym = 'O'
+        self.new_game(first=True)        
 
-    def new_game(self, comp_sym='O'):
+    def new_game(self, first=False):
         self.board =  [["   ", "   ", "   "], ["   ", "   ", "   "], ["   ", "   ", "   "]]
         self.player = 'X'
         if self.comp:
-            self.comp_sym = comp_sym
+            self.comp_sym = ('X' if not first and self.comp_sym == 'O' else 'O')
         self.BOARD_TOP = 0
         self.BOARD_BOTTOM = 4
         self.BOARD_LEFT = 0
@@ -134,14 +136,36 @@ class GameBoard:
         sleep(5)
         exit()   
 
-def main(stdscr):
+def choose_mode(win):
+    curses.curs_set(False)
+    y, x = 2, 1    
+    while True:
+        win.addstr(0, 1, "Welcome to TicTacToe!")
+        win.addstr(1, 1, "Would you like to play 1 or 2 player mode?")
+        win.addstr(2, 3, "1 Player")
+        win.addstr(3, 3, "2 Player")
+        win.move(y, x)
+        win.addstr('>>')
+        win.refresh()
+        key = win.getch()
+        if key == curses.KEY_UP and y > 2:
+            y -= 1
+        elif key == curses.KEY_DOWN and y < 3:
+            y += 1
+        if key == 10:
+            if y == 2:
+                return True
+            else:
+                return False
+        win.clear()
 
-    ## TO-ADD: logic for choosing between vs another person or the computer 
-    computer = True
-    if computer:        
-        board = GameBoard(stdscr, comp=True)
-    else:
-        board = GameBoard(stdscr)
+        
+    
+
+def main(stdscr):  
+    
+    computer = choose_mode(stdscr)
+    board = GameBoard(stdscr, computer)
     while True:
         board.check_draw()
         board.draw_board()
@@ -170,7 +194,7 @@ def main(stdscr):
                     board.print_win()
                     stdscr.refresh()
                     if board.prompt_newgame():
-                        board.new_game(comp_sym=('O' if board.comp_sym == 'X' else 'X'))
+                        board.new_game()
                     else:
                         exit()                
                 else:
