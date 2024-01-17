@@ -16,11 +16,11 @@ class GameBoard:
         self.comp = comp
         self.new_game()        
 
-    def new_game(self, sym='X'):
+    def new_game(self, comp_sym='O'):
         self.board =  [["   ", "   ", "   "], ["   ", "   ", "   "], ["   ", "   ", "   "]]
-        self.player = sym
+        self.player = 'X'
         if self.comp:
-            self.comp_sym = 'O' if self.player == 'X' else 'X'
+            self.comp_sym = comp_sym
         self.BOARD_TOP = 0
         self.BOARD_BOTTOM = 4
         self.BOARD_LEFT = 0
@@ -66,8 +66,6 @@ class GameBoard:
     def make_move(self):
         if self.board[self.X_LOC // self.X_SPACE][self.Y_LOC // self.Y_SPACE] == "   ":
             self.board[self.X_LOC // self.X_SPACE][self.Y_LOC // self.Y_SPACE] = f" {self.player} "
-            self.change_player()
-            self.display_turn()
 
 
     def change_player(self):
@@ -79,7 +77,13 @@ class GameBoard:
             if ''.join(check).replace(' ', '') == 'XXX' or ''.join(check).replace(' ', '') == 'OOO':
                 self.win.clear()
                 self.draw_board()
-                self.win.addstr(self.BOARD_BOTTOM + 2, self.BOARD_LEFT, f'{check[0]} WINS!')
+                if self.comp:
+                    if self.player == self.comp_sym:                        
+                        self.win.addstr(self.BOARD_BOTTOM + 2, self.BOARD_LEFT, f'COMPUTER WINS!')
+                    else:
+                        self.win.addstr(self.BOARD_BOTTOM + 2, self.BOARD_LEFT, f'YOU WIN!')
+                else:
+                    self.win.addstr(self.BOARD_BOTTOM + 2, self.BOARD_LEFT, f'{check[0]} WINS!')
                 return True
         return False
     
@@ -91,6 +95,7 @@ class GameBoard:
         self.Y_LOC = self.BOARD_RIGHT // 2
 
     def display_turn(self):
+        self.win.clear()
         if self.comp and self.player == self.comp_sym:
             self.win.addstr(self.BOARD_BOTTOM + 2, self.BOARD_LEFT, f"It's the computer's turn")
         elif self.comp:
@@ -105,9 +110,11 @@ class GameBoard:
         self.win.addstr(self.BOARD_BOTTOM + 4, self.BOARD_LEFT, f"Hit ENTER to play again, hit anything else to quit")
         key = self.win.getch()
         if key == 10:            
-            ## needed for when computer is added?
-            # self.win.addstr(self.BOARD_BOTTOM + 6, self.BOARD_LEFT, f"Great, you'll start as {'O' if self.player == 'X' else 'X'} this time!")
-            self.win.addstr(self.BOARD_BOTTOM + 6, self.BOARD_LEFT, f"Great! Make sure to swap players!")
+            if self.comp:
+                sym = ('O' if self.player == 'X' else 'X')
+                self.win.addstr(self.BOARD_BOTTOM + 6, self.BOARD_LEFT, f"Great! You'll start as {sym} this time!")
+            else:
+                self.win.addstr(self.BOARD_BOTTOM + 6, self.BOARD_LEFT, f"Great! Make sure to swap players!")
             self.win.refresh()
             for x in (1,2,3):
                 self.win.addstr('.')
@@ -138,8 +145,10 @@ def main(stdscr):
     while True:
         board.check_draw()
         board.draw_board()
+        stdscr.refresh()
         board.set_cursor()
         if board.comp and board.player == board.comp_sym:
+            curses.curs_set(False)
             sleep(3)
             board.computer_move()
             board.change_player()
@@ -161,10 +170,12 @@ def main(stdscr):
                     board.print_win()
                     stdscr.refresh()
                     if board.prompt_newgame():
-                        board.new_game()
+                        board.new_game(comp_sym=('O' if board.comp_sym == 'X' else 'X'))
                     else:
-                        exit()
-                    
+                        exit()                
+                else:
+                    board.change_player()
+                    board.display_turn()   
             elif key == curses.ascii.ESC:
                 exit()
 
