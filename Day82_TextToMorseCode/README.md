@@ -29,7 +29,7 @@ The application can also run silently, taking in options and the message as comm
 4. Enjoy your encoded/decoded message printed to the Terminal!
 
 
-## Thoughts
+## Project Writeup
 
 In short, I created a command line translator as requested for day 82 of the 100 Days of Code, but I added a few more features.
 
