@@ -4,7 +4,7 @@ This program is a terminal based tic tac toe game that utilizes the [Python curs
 
 ## Install instructions
 
-Clone this repo, and install the curses module, if on Windows, the `windows-curses` module is available. once that's installed, you can simply run `python main.py`.
+Clone this repo, and install the curses module, if on Windows, the `windows-curses` module is available. Once that's installed, you can simply run `python main.py`.
 
 ## Game Instructions
 
