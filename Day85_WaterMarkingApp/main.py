@@ -1,8 +1,6 @@
 from tkinter import *
 import tkinter.filedialog
 from PIL import Image, ImageTk, ImageDraw, ImageFont
-from functools import partial
-import os, sys
 
 class MyImage():
     def __init__(self):
